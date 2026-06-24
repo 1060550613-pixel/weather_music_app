@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ app_name }} - {{ app_slogan }}</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header>
+        <h1>🎵 {{ app_name }}</h1>
+        <p class="slogan">{{ app_slogan }}</p>
+    </header>
+
+    <main>
+        <!-- 天气切换 -->
+        <section class="weather-section">
+            <form method="POST" action="/">
+                <label for="weather">📍 当前天气：</label>
+                <select name="weather" id="weather" onchange="this.form.submit()">
+                    {% for w in weather_list %}
+                    <option value="{{ w }}" {% if w == weather %}selected{% endif %}>{{ w }}</option>
+                    {% endfor %}
+                </select>
+                <p class="hint">{{ home_text.manual_weather_hint }}</p>
+            </form>
+        </section>
+
+        <!-- 今日心情文案 -->
+        <section class="mood-section">
+            <div class="mood-card">
+                <h2>今日天气：{{ weather }}</h2>
+                <p class="mood-text">{{ mood_text }}</p>
+                <div class="emotion-tags">
+                    {% for e in emotions %}
+                    <span class="tag">{{ e }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+        <!-- 推荐歌曲 -->
+        <section class="songs-section">
+            <h2>🎶 {{ home_text.play_btn }}</h2>
+            <div class="song-list">
+                {% for song in songs %}
+                <div class="song-card">
+                    <div class="song-info">
+                        <strong>{{ song.title }}</strong> — {{ song.artist }}
+                    </div>
+                    <div class="song-tags">
+                        <span class="tag tag-genre">{{ song.genre }}</span>
+                        <span class="tag tag-emotion">{{ song.emotion }}</span>
+                        <span class="tag tag-bpm">{{ song.bpm }}节奏</span>
+                        <span class="tag tag-scene">{{ song.scene }}</span>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <!-- 推荐歌单 -->
+        <section class="playlists-section">
+            <h2>📋 天气专属歌单</h2>
+            <div class="playlist-list">
+                {% for pl in playlists %}
+                <div class="playlist-card">
+                    <h3>{{ pl.name }}</h3>
+                    <p>{{ pl.description }}</p>
+                    <div class="emotion-tags">
+                        {% for tag in pl.emotion_tags %}
+                        <span class="tag">{{ tag }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <!-- 导航 -->
+        <nav class="bottom-nav">
+            <a href="/">🏠 首页</a>
+            <a href="/square">🎵 歌单广场</a>
+            <a href="/preference">⚙️ 偏好设置</a>
+        </nav>
+    </main>
+</body>
+</html>

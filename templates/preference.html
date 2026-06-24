@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ app_name }} - 偏好设置</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header>
+        <h1>🎵 {{ app_name }}</h1>
+        <p class="slogan">个性化偏好设置</p>
+    </header>
+
+    <main>
+        <section class="preference-section">
+            <h2>⚙️ 当前偏好配置</h2>
+            <div class="pref-card">
+                <p><strong>用户昵称：</strong>{{ user_pref.name }}</p>
+                <p><strong>情绪偏好：</strong>{{ user_pref.weather_mood }}</p>
+                <p><strong>人声偏好：</strong>{{ user_pref.vocal_pref }}</p>
+                <p><strong>语种偏好：</strong>{{ user_pref.language_pref }}</p>
+            </div>
+
+            <h3>情绪偏好选项</h3>
+            <div class="options-group">
+                {% for opt in mood_options %}
+                <span class="option-tag {% if opt == user_pref.weather_mood %}active{% endif %}">{{ opt }}</span>
+                {% endfor %}
+            </div>
+
+            <h3>人声偏好选项</h3>
+            <div class="options-group">
+                {% for opt in vocal_options %}
+                <span class="option-tag {% if opt == user_pref.vocal_pref %}active{% endif %}">{{ opt }}</span>
+                {% endfor %}
+            </div>
+
+            <h3>语种偏好选项</h3>
+            <div class="options-group">
+                {% for opt in language_options %}
+                <span class="option-tag {% if opt == user_pref.language_pref %}active{% endif %}">{{ opt }}</span>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section class="privacy-section">
+            <h2>🔒 隐私说明</h2>
+            <div class="privacy-card">
+                <p>📍 <strong>定位权限：</strong>{{ privacy_text.location_permission }}</p>
+                <p>🎯 <strong>个性化推荐：</strong>{{ privacy_text.personalization_switch }}</p>
+                <p>💾 <strong>数据存储：</strong>{{ privacy_text.data_storage }}</p>
+            </div>
+        </section>
+
+        <nav class="bottom-nav">
+            <a href="/">🏠 首页</a>
+            <a href="/square">🎵 歌单广场</a>
+            <a href="/preference">⚙️ 偏好设置</a>
+        </nav>
+    </main>
+</body>
+</html>

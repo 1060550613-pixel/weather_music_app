@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ app_name }} - 歌单广场</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header>
+        <h1>🎵 {{ app_name }}</h1>
+        <p class="slogan">{{ square_text.title }}</p>
+    </header>
+
+    <main>
+        <section class="intro-section">
+            <p class="intro-text">{{ square_text.intro }}</p>
+            <div class="guide-cards">
+                <div class="guide-card rain">🌧️ {{ square_text.rainy_guide }}</div>
+                <div class="guide-card sun">☀️ {{ square_text.sunny_guide }}</div>
+            </div>
+        </section>
+
+        <section class="playlists-section">
+            <h2>全部天气歌单</h2>
+            <div class="playlist-list">
+                {% for pl in playlists %}
+                <div class="playlist-card">
+                    <h3>{{ pl.name }}</h3>
+                    <p>{{ pl.description }}</p>
+                    <div class="weather-tags">
+                        {% for wt in pl.weather_tags %}
+                        <span class="tag tag-weather">{{ wt }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="emotion-tags">
+                        {% for et in pl.emotion_tags %}
+                        <span class="tag">{{ et }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <nav class="bottom-nav">
+            <a href="/">🏠 首页</a>
+            <a href="/square">🎵 歌单广场</a>
+            <a href="/preference">⚙️ 偏好设置</a>
+        </nav>
+    </main>
+</body>
+</html>

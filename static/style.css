@@ -1,0 +1,104 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+}
+
+header {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    text-align: center;
+    padding: 20px;
+    color: white;
+}
+
+header h1 { font-size: 2rem; margin-bottom: 4px; }
+header .slogan { font-size: 0.95rem; opacity: 0.9; }
+
+main { max-width: 680px; margin: 0 auto; padding: 20px 16px 80px; }
+
+section { margin-bottom: 24px; }
+
+/* 天气切换 */
+.weather-section { background: white; border-radius: 16px; padding: 16px; }
+.weather-section select {
+    margin-left: 8px; padding: 6px 12px;
+    border: 1px solid #ddd; border-radius: 8px;
+    font-size: 1rem; cursor: pointer;
+}
+.hint { font-size: 0.8rem; color: #999; margin-top: 8px; }
+
+/* 心情卡片 */
+.mood-card {
+    background: white; border-radius: 16px; padding: 20px;
+    text-align: center;
+}
+.mood-card h2 { font-size: 1.3rem; color: #764ba2; margin-bottom: 8px; }
+.mood-text { color: #555; font-size: 1rem; line-height: 1.6; margin-bottom: 12px; }
+
+/* 标签 */
+.emotion-tags, .weather-tags, .song-tags, .options-group {
+    display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px;
+}
+.tag {
+    background: #f0ebff; color: #764ba2;
+    padding: 3px 10px; border-radius: 20px; font-size: 0.8rem;
+}
+.tag-genre { background: #e8f4fd; color: #2980b9; }
+.tag-emotion { background: #fef9e7; color: #d68910; }
+.tag-bpm { background: #eafaf1; color: #1e8449; }
+.tag-scene { background: #fdf2f8; color: #a569bd; }
+.tag-weather { background: #ebf5fb; color: #1a5276; }
+
+/* 歌曲列表 */
+.songs-section h2, .playlists-section h2 {
+    color: white; font-size: 1.1rem; margin-bottom: 12px;
+}
+.song-list, .playlist-list { display: flex; flex-direction: column; gap: 10px; }
+.song-card, .playlist-card {
+    background: white; border-radius: 14px; padding: 14px 16px;
+}
+.song-info { font-size: 1rem; margin-bottom: 6px; }
+.playlist-card h3 { color: #764ba2; margin-bottom: 6px; }
+.playlist-card p { color: #555; font-size: 0.9rem; margin-bottom: 8px; }
+
+/* 介绍区 */
+.intro-text { color: white; font-size: 1rem; margin-bottom: 12px; }
+.guide-cards { display: flex; flex-direction: column; gap: 8px; }
+.guide-card {
+    background: rgba(255,255,255,0.9); border-radius: 12px;
+    padding: 12px 16px; font-size: 0.9rem; color: #333; line-height: 1.5;
+}
+
+/* 偏好设置 */
+.preference-section h2, .privacy-section h2 {
+    color: white; margin-bottom: 12px;
+}
+.preference-section h3 { color: rgba(255,255,255,0.9); margin: 14px 0 6px; font-size: 0.95rem; }
+.pref-card, .privacy-card {
+    background: white; border-radius: 14px; padding: 16px;
+}
+.pref-card p, .privacy-card p { padding: 6px 0; border-bottom: 1px solid #f0f0f0; font-size: 0.9rem; line-height: 1.6; }
+.option-tag {
+    background: rgba(255,255,255,0.7); color: #555;
+    padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; cursor: pointer;
+}
+.option-tag.active { background: #764ba2; color: white; }
+
+/* 底部导航 */
+.bottom-nav {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
+    display: flex; justify-content: space-around; padding: 10px 0;
+    border-top: 1px solid #eee;
+}
+.bottom-nav a {
+    text-decoration: none; color: #764ba2;
+    font-size: 0.85rem; font-weight: 500;
+    padding: 4px 8px; border-radius: 8px;
+    transition: background 0.2s;
+}
+.bottom-nav a:hover { background: #f0ebff; }
